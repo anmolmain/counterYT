@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Counter</title>
+    <style>
+        html,
+        body {
+            font-size: 16px;
+            overflow: hidden;
+            margin: 0px;
+            padding: 0px;
+        }
+
+        .fullDiv {
+            width: 100vw;
+            height: 100vh;
+            background-color: #2f8977;
+        }
+
+        .mainDiv {
+            /* border: 1px solid black; */
+            text-align: center;
+            padding: 2%;
+            position: absolute;
+            transform: translate(-50%, -50%);
+            left: 50%;
+            top: 50%;
+            width: 90%;
+        }
+
+        #Heading {
+            font-size: 5rem;
+            text-transform: uppercase;
+            font-family: sans-serif;
+            letter-spacing: 5px;
+            color: white;
+        }
+
+        #myValue {
+            font-size: 4rem;
+            text-transform: uppercase;
+            font-family: sans-serif;
+            letter-spacing: 5px;
+            color: white;
+        }
+
+        .ButtonSection button {
+            padding: 1%;
+            font-weight: 700;
+            text-transform: uppercase;
+            border-radius: 10px;
+            margin-left: 1%;
+            width: 120px;
+            transition: 0.2s;
+        }
+
+        .ButtonSection button:hover {
+            background-color: gray;
+            color: white;
+            transition: 0.2s;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="fullDiv">
+        <div class="mainDiv">
+            <div class="HeadingSection">
+                <h1 id="Heading">counter</h1>
+            </div>
+            <div class="CounterSection">
+                <h1 id="myValue">0</h1>
+            </div>
+            <div class="ButtonSection">
+                <button id="DecreaseBtn">Decrease</button>
+                <button id="ResetBtn">Reset</button>
+                <button id="IncreaseBtn">Increase</button>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    var value = 0;
+    function myFun(event) {
+        if (event.target.tagName === "BUTTON") {
+            var BtnId = event.target.id;
+            BtnId === "ResetBtn" ? value = 0 : BtnId === "IncreaseBtn" ? value = value + 1 : value = value - 1;
+            const updateVal = document.querySelector('#myValue');
+            updateVal.innerText = value;
+            let tClr = value === 0 ? "white" : value < 0 ? "red" : "green";
+            document.getElementById("myValue").style.color = tClr;
+        }
+        else {
+
+        }
+
+    }
+
+
+    const ButtonSection = document.querySelector('.ButtonSection');
+    ButtonSection.addEventListener("click", myFun);
+
+
+
+</script>
+
+</html>
